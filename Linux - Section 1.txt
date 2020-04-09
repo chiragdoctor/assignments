@@ -1,0 +1,388 @@
+SECTION 1
+1. Expand Bash?
+- Bash is a UNIX shell or command language. Bash is a shell where users type commands to cause actions.
+- The shell's name is an acronym for Bourne-again shell, a pun on the name of the Bourne shell that it replaces 
+    and the notion of being "born again".
+- Bash can also read and execute commands from a file, called a shell script.
+- Like all Unix shells, it supports filename 
+    - globbing (wildcard matching)
+    - piping
+    - documents
+    - command substitution
+    - variables
+    - control structures for condition-testing and iteration.    
+
+2. Explain all types of Shell Expansion.
+- Brace Expansion:	  	            Expansion of expressions within braces.
+- Tilde Expansion:	  	            Expansion of the ~ character.
+- Shell Parameter Expansion:	  	How Bash expands variables to their values.
+- Command Substitution:	  	        Using the output of a command as an argument.
+- Arithmetic Expansion:	  	        How to use arithmetic in shell expansions.
+- Process Substitution:	  	        A way to write and read to and from a command.
+- Word Splitting:	  	            How the results of expansion are split into separate arguments.
+- Filename Expansion:	  	        A shorthand for specifying filenames matching patterns.
+- Quote Removal:	  	            How and when quote characters are removed from words.
+
+
+3. what is the usage of the man command?
+- man command is manual command. It when combined with other commands can display the manaul pages for the application.  
+
+4. Write a command to display the current working directory.
+- pwd
+
+5. Write a command to change the directory path to a certain directory.
+- cd "/path/to/directory"
+
+6. Write a command to get into the home directory.
+- cd or cd ~
+
+7. Write a command to get into the parent directory.
+- cd..
+
+8. Write a command to go to the previous directory.
+- cd -
+
+9. Define the absolute path.
+- When a path is typed with a "/" then root of the file tree is assumed. It is called as absolute path. 
+- It always starts with a "/".  
+
+10. Define the relative path.
+- If you don't define a "/" then current directory is assumed as the starting point. It is called as a relative path. 
+- It never starts with a "/".
+
+11. Write command to make a directory.
+- mkdir dirname
+
+12. Write command to remove a directory.
+- rmdir dirname
+
+13. Write command to remove the empty directory.
+- rm -d dirname or rmdir dirname
+
+14. Write a command to remove all the files and sub-directories present in the directory.
+- rm -r dirname
+
+15. Write the usage of the pushd command.
+- pushd is used to save the current directory into the stack and move on to new directory.
+- pushd dirname 
+
+16. Write the usage of the popd command.
+- popd is used to return back to the previous directory which is on top of the stack.  
+- popd
+
+17. Write a command to list all the files in the current directory
+- ls
+
+18. Write command to know the type of any given file.
+- file filename
+
+19. Write about the magic file in the Unix file system.
+- Magic file contains patterns to recognise the file types. 
+- The magic file is located in /usr/share/file/magic. 
+ 
+20. Write the usage of file command for the special files as a parameter.
+- file -s pathtospecialfile
+
+21. Write a command to create the file.
+- touch filename
+
+22. Write a command to copy the file without a change in timestamps.
+- cp --preserve=timestamps oldfile newfile
+
+23. Write a command to modify the access time of a file.
+- touch -a filename
+
+24. list all the options available for the touch command.
+-A      Adjust the access and modification time stamps for the file by the specified value.  This flag is intended for use in modifying files with incorrectly set time stamps.
+            The argument is of the form ``[-][[hh]mm]SS'' where each pair of letters represents the following
+                -       Make the adjustment negative: the new time stamp is set to be before the old one.
+                hh      The number of hours, from 00 to 99.
+                mm      The number of minutes, from 00 to 59.
+                SS      The number of seconds, from 00 to 59
+            The -A flag implies the -c flag: if any file specified does not exist, it will be silently ignored.
+
+-a      Change the access time of the file.  The modification time of the file is not changed unless the -m flag is also specifie
+-c      Do not create the file if it does not exist.  The touch utility does not treat this as an error.  
+        No error messages are displayed and the exit value is not affecte
+-f      Attempt to force the update, even if the file permissions do not currently permit i
+-h      If the file is a symbolic link, change the times of the link itself rather than the file that the link points to.  
+        Note that -h implies -c and thus will not create any new file
+-m      Change the modification time of the file.  The access time of the file is not changed unless the -a flag is also specified
+-r      Use the access and modifications times from the specified file instead of the current time of day
+-t      Change the access and modification times to the specified time instead of the current time of day.  
+        The argument is of the form ``[[CC]YY]MMDDhhmm[.SS]'' where each pair of letters represents the following:
+                   CC      The first two digits of the year (the century).
+                   YY      The second two digits of the year.  If ``YY'' is specified, but ``CC'' is not, a value for ``YY'' between 69 and 99 results in a ``CC'' value of 19.  Otherwise, a ``CC'' value of 20 is used.
+                   MM      The month of the year, from 01 to 12.
+                   DD      the day of the month, from 01 to 31.
+                   hh      The hour of the day, from 00 to 23.
+                   mm      The minute of the hour, from 00 to 59.
+                   SS      The second of the minute, from 00 to 61.
+
+        If the ``CC'' and ``YY'' letter pairs are not specified, the values default to the current year.  If the ``SS'' letter pair is not specified, the value defaults to 0.
+
+25. Write command to remove a file from a directory.
+- rm filename
+
+26. Write about ​'rm -i​' command.
+- -i is an iternative flag.
+- It helps us so that we don't accidently delete the file.
+
+27. Write a command to copy the file.
+- cp filename newfilename
+
+28. Define about the recursive copy.
+- cp -r is used for recursive copy. It forces to copy all the files and sub directories recursively. 
+
+29. Write about the usage of head command.
+- It is used to display first n lines of the file. 
+- head -n (head -10; displayed first 10 of the file).
+
+30. Write about the usage of the tail command.
+- It is used to display last n lines of the file. 
+- tail -n (tail -10; displayed last 10 of the file).
+
+31. Write a command to view the file content.
+- cat filename
+
+32. Write the usage of cat command to copy the file.
+- cat file1 > file2
+
+33. Write the usage of cat command to create the file
+- cat > file1.txt
+
+34. Write command to concatenate the file contents.
+- cat file1 file2 >file3
+
+35. Write a command to copy files using mv command
+- mv file1 file2
+
+36. Write command to move the files.
+- mv home/chirag/testfile mv/doctor/
+
+37. Write the usage of tac command.
+- It will reverse the contents of the file. 
+
+38. Write briefly about the chmod command.
+- chmod command is used to add and remove permission on files and folders 
+- It change read and write permission for users and groups
+- It is also used to change the special mode flags. 
+- It is an abbrivation for change mode. 
+
+39. Write a command to change the mode a file as universal Writable/readable.
+- chmod 666 filename
+
+40. Write a command to change the file as executable/Writable/readable.
+- chmod 777 filename
+
+41. Write all the file permissions possible.
+- Read, Write, executable. 
+
+42. Write about umask command.
+- When creating a new file or directory set of default permissions are applied. This is set of default permissions is are determined by umask. 
+- umask is set of permissions that you don't want to apply by default. 
+
+43. Write the usage of 'chown' command.
+- chown is used to change the user owner of the file. 
+- It is also used to change both user and group ownwers. 
+
+44. Write a command to make the files and directories to have all permissions to you and only readable to others
+- chmod u=+x,g=r filename
+
+45. Write a command to print output in stdout and in file.
+- echo "It's winter today" > winter.txt && cat winter.txt
+
+46. Write about the grep command.
+- Grep is used to filter lines of text which are containing or not containing a certain string. 
+- grep hello winter.txt - will display all the lines containing hello.
+- grep -i hello winter.txt - will filter in case insensitive way.
+- grep -v hello winter.txt - will display all the lines those are not matching string hello. 
+
+47. Write a command to print the top and bottom n lines
+- head -n filename
+- tail -n filemane
+
+48. Write briefly about the' tr' command
+- It is used to translate character. 
+- cat winter.txt | tr 'w' W - it will translate all the lowercase 'w' in file to upppercase 'W'. 
+
+49. Write a command to print word count in a given file.
+- wc -w filename
+
+50. explain sort command usage to sort the file numeric wise.
+- sort -n filename
+
+51. Write about the sed command briefly.
+- sed is the abbrivation for stream editor.
+- It is used to perform editing fuction on stream using regular expressions. 
+
+52. sort the file contents using PIPE
+- cat filename | sort 
+
+53. Write command to display the IP address of the host
+- ifconfig
+
+54. Write about IP command.
+- It is used for following purpose 
+    1. Find out which interfaces are configured on the system.
+    2. Query the status of a IP interface.
+    3. Configure the local loop-back, Ethernet and other IP interfaces.
+    4. Mark the interface as up or down.
+    5. Configure and modify default and static routing.
+    6. Set up tunnel over IP.
+    7. Show ARP or NDISC cache entry.
+    8. Assign, delete, set up IP address, routes, subnet and other IP information to IP interfaces.
+    9. List IP Addresses and property information.
+    10. Manage and display the state of all network.
+    11. Gather multicast IP addresses info.
+    12. Show neighbour objects i.e. ARP cache, invalidate ARP cache, add an entry to ARP cache and more.
+    13. Set or delete routing entry.
+    14. Find the route an address (say 8.8.8.8 or 192.168.2.24) will take.
+    15. Modify the status of interface.
+
+55. create an alias to display your city name.
+- alias mum='echo mumbai'
+
+56. explain about 'which' command
+- The which command is used to identify the location of the executable which can be executed by typing the executable name in command prompt
+- The command searchs for execuatble speciafied as an argument in the directories listed in PATH variable. 
+- ex. which node
+
+57. Write a command to display the exit code of the previous command.
+- echo $?
+
+58. execute the pwd command twice using a single command.
+- pwd && pwd
+
+59. Execute a command to sleep your system for 10 seconds.
+- sleep n (n is no of seconds).
+
+60. Write about the environmental variables.
+- Environment variables are a set of dynamic named values, stored within the system that are used by applications launched in shells or subshells.
+- Environment variable is a simple name value pair. 
+- It allows us to comstomize the system and how application behaves on the system. 
+
+61. Write a command to display all the environmental variables in the system
+- printenv
+
+62. Export a Myvar shell variable using export command.
+It- export Myvar="some information"
+
+63. Write a command to display all the files ending with .txt
+- ls | grep .txt
+
+64. Write about the file globbing.
+- File globbing is the operation that recognises the patterns and does the file path expansions.
+- arterisk (*) - it is used to match zero or more characters. For example, if we want to delete all the directories starting with hello
+  then we can do rm -rf hello*. It will match hello and all other characters after and delete all the directories.
+- question mark(?) - it will match only one character adther the string hello. for example, hello?    
+
+65. Interpret the command 'echo *'.
+- echo * is like the ls command it will list all the files and folders under the directory. 
+
+66. Exhibit the command 'ls [a-z]*.txt'.
+- This will list all the files with extension .txt. 
+
+67. Write a command to display the file which has alphabets in octal order.
+- od -b filename
+
+68. Write a command to display all removed duplicate columns in a file.
+- cat filename | uniq
+
+69. Write the usage of a find command.
+- find command is used to search for files in a given path. 
+- It is mostly used at the start of the pipe.
+- Ex. find /etc > etcfiles.txt. This will copy the file paths in etcfiles.txt.
+
+70. Write the utility usage of date.
+- The date command can display the date, time, time zone and more.
+- The format to display the date can be customised by passing the required format. 
+- ex. date +'%A %d-%m-%Y' - will result in date string as "Saturday 17-04-2010".
+
+71. Compress the file a.txt using the gzip command.
+- gzip filename.
+
+72. Write a command to unzip the file using gunzip.
+- gunzip filename
+
+73. Explain briefly about catzip command.
+-   
+
+74. Write about bzip,bunzip,bzcat commands.
+- bzip is also a file compression tool. It takes more time to compress a file with bzip but compression is better than gzip.
+- bunzip is the command which is used to uncompress the files. 
+- bzcat is also an another way to compress files. 
+
+75. explain the difference between bzip and gzip commands.
+- gzip by default uses level 6 compression. The compression of data is good and the time taken to compress the data is also very fast as compared to bzip.
+- bzip uses level 9 compression, It compresses the data to a very good amount and is better than gzip but it takes bit more time than gzip.  
+
+76. Write about the 'w' command.
+- w command is used to display who is logged in and what they are doing. it gives details of what users are doing on the system like what application are running.
+- It also displays the time they have logged into the system. 
+
+77. Write about who command.
+- displays who is logged into the system. 
+
+78. Write about the id command.
+- The id command will give you your user id, primary group id and all the group that user belongs to.
+
+79. Write about the Sudo command.
+- sudo stands for superuser do.
+- It allows user to run command as another user if the user has proper permissions. They need to be properly specified in /etc/sudoers file. 
+- By default, sudo requires user to authenticate the user with user's password and not sudo password. 
+- Once the user is authenticated a timestamp is recorded and user may use the sudo command for certain period of time. 
+- successful and unsucessful both timestamps are recorded in sudoers file. 
+
+80. Write about the /etc/passwd file.
+- This file stores the local database of the users. 
+- Ex. inge:x:518:524:art dealer:/home/inge:/bin/ksh - Information like this stored in this file. 
+- There are 7 columns seperated by colon. The columns contain the username, an x, the user id, the primary group id, a description, the name of the home directory, and the login shell.
+
+81. Write a command to create a user.
+- useradd username
+
+82. Write a command to delete the user 'user5'
+- userdel user5
+
+83. change the user description using usermod command.
+- usermod -c 'some other description' username
+
+84. Write briefly about the /etc/skel command.
+- When a user is added with a -m option the /etc/skel directory is copied to the newly created home directory. 
+- It just contains some diretories those contains some basic hidden files that contains profile settings and dafault values of the application. 
+- It basically just serves as a default home directory and a default user profile.   
+
+85. Write a command to change the shell of a prescribed user.
+- chsh -s {shellname}. ex. chsh -s /bin/ksh 
+
+86. Write a command to change your shell to the Korn shell.
+- chsh -s /bin/ksh
+
+87. Write a command passwd command
+- passwd username, this will change the password for the username specified. 
+
+88. what is the use of /etc/passwd file.
+- It is used to keep track of every registed user that has access to the system. 
+- The /etc/passwd file is a colon-separated file that contains the following information:
+    -User name
+    -Encrypted password
+    -User ID number (UID)
+    -User's group ID number (GID)
+    -Full name of the user (GECOS)
+    -User home directory
+    -Login shell 
+
+89. create a user using a command useradd with OpenSSL function.
+- useradd -d /home/dummy -m -p $(echo "P4sSw0rD" | openssl passwd -1 -stdin) dummy
+
+90. Write briefly about the /etc/login.defs
+- The /etc/login.defs file contains some default settings for user passwords like password aging and length settings.
+- It contains following information depending upon the system being used, 
+    -Location of user mailboxes
+    -Password aging controls
+    -Minimum and maximum values for automatic UID selection (1000 to 60000)
+    -Minimum and maximum values for automatic GID selection (1000 to 60000)
+    -Whether home directories should be created when adding a new user
+    -Default umask
+    -Encryption method used to encrypt passwords

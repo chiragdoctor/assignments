@@ -1,0 +1,51 @@
+1) Setup a cron job which creates a new text file every 20 seconds.
+Note : a) The Text File Name should be the system TIME while executing.
+b)The Text File Content should be the system DATE.
+
+
+Steps to create a cron job are as bellow
+
+1. Create a script.sh
+    echo $(date) >> $(date +%T).txt    
+
+
+2.In termial type crontab -e to edit a crontab
+3. Now with in the editor create the crontab
+    * * * * * /Users/chiragdoctor/script.sh
+    * * * * *  sleep 20; /Users/chiragdoctor/script.sh
+
+* * * * ** * * * ** * * * ** * * * ** * * * ** * * * ** * * * ** * * * ** * * * ** * * * ** * * * ** * * * ** * * * ** * * * *
+
+3) Explain the difference between file soft links and hard links by creating one. Demonstrate with an example file.
+
+Softlinks
+- Soflinks are also called as symbolic links. They are symbolic links to original file. 
+- They can be created cross file system. 
+- Has different inode number and permissions.
+- permissions will not be updated. 
+- has only path of original file and not the content. Once the orignal file is deleted no contents will be shown. 
+- Command: ln -s sourcefile destinationfile
+
+Hardlinks
+- They are mirror images of original file. 
+- Cannot cross file system boundies
+- can't link directories 
+- has the same inode number and file permissions
+- Has the content of the original file even if the original file is moved or deleted.
+- Command: ln sourcefile destinationfile   
+
+* * * * ** * * * ** * * * ** * * * ** * * * ** * * * ** * * * ** * * * ** * * * ** * * * ** * * * ** * * * ** * * * ** * * * *
+
+4) Explain how binary system is being used with chmod command.
+
+- Binary system is used to set permissions on perticualar files or directories.
+- Permissions are divided into 3 categories. Users, Groups and others. 
+- Each category can have 3 types of permissions Read / Write / Executable. 
+- Max of 3-bits are used to assign permission i.e. 0-7
+- In bellow example of to give all permissions to user and no permissions to other categories. 
+
+Users               Groups              Others
+r w x               r w x               r w x
+1 1 1               0 0 0               0 0 0
+
+- Command to assign permission will be chmod 700 filename.

@@ -1,0 +1,185 @@
+ ***************** GIT and GITHUB *****************
+ 
+1. What is a version control system? name few version control software? What makes GIT so special?
+- Version control system records changes to a file set of files so that we can recall a specific version later.  
+- CVS, Subversion, Perforce, Git, mercurial, Darcs and Bazaar. 
+- Git is special becuase it has 
+    . It is faster than other VCSs.
+    . It has a very simple design. 
+    . Strong support for non-linear development. i.e. Mnay developer can create branches and work in parallel. 
+    . It is fully distributed. All of the code resides on all the client as well as server, so it server copy is lost then it can be ontained from any of the copies from a version of client. 
+    . Able to handle large projects very efficiently. 
+
+2. Will ​git init​ commands enables the file tracking?
+- git init command will just a create local repository. It will not enable file tracking .
+- It creates a .git folder inside the repo which has git repository skeleton.  
+
+3. What is command used to move a file from staged area to untracked?
+- git rm --cached filename
+
+4. What is the command used to check short status of a Git repository and what does the following symbols mean
+in context of git status? 
+    ·​ ​A
+    ·​ ​?? 
+    ·​ ​M
+
+- git status -s - Command used to check the short status of Git repository.
+- Following symbols are as follows
+    ·​ ​A - Added  
+    ·​ ​?? - untracked
+    ·​ ​M - modified
+
+5. Each file in your working directory can be in how many states?
+ - Each file in the directory can be in 4 states
+    - untracked
+    - unmodified
+    - modified
+    - staged
+
+6. Why is gitignore file used for and what are glob patterns ? if I have the following text in my .gitignore file what
+will happen when I add and commit the files working directory ?
+*.ab
+doc/**/*.xlxs
+
+- .gitignore file is used to ignore all the files that we don't want git to track. 
+- glob patters are like regex pattern those when specified in .gitignore file, it will help to ignore all thee files those will match the glob pattern.
+- All the files with .ab extension and all the files with .xlxs extension in doc will be elcluded and not be  tracked and not be commited to git.   
+
+7. What is command used to look at files which are changed but not staged and files which are staged but not
+committed ​?
+- git status is the command that is used for both scenarios. 
+
+8. What will this command do git rm \*~?
+- This command removes all files whose names end with a ~
+
+9. Will ​git diff ​command display changes made in the files of working directory, if the files are still ​unstaged​?
+- yes
+
+10.​ ​Will Git explicitly track the file movement ?
+- Git does not explicitly track file movement. 
+
+11.​ ​In which order will git log displays commits? Reverse chronological order or chronological order ? 
+- Reverse chronological order
+
+12.​ ​Command used to view abbreviated stats for each commit ?
+- git log --stat is the command used to see abbreviated stats for each commit. 
+
+13.​ ​Command used to display the commit dates of the commits made ?
+- git log --pretty=format:"%ad" - this will give author dates. 
+- git log --pretty=format:"%cd" - this will give committer dates. 
+
+14.​ ​Command used to create a file whose content is a list of all the commit names of the current working
+directory?
+- echo $(git log --pretty=format:"%s") >> log.txt
+
+15.​ ​How can I list the commits made until a particular date?
+- git log --pretty="%h - %s" --since="2008-10-01" --before="2008-11-01". 
+- Above command can be used to list all the commits within particular dates.
+
+16. Can I rename the commit name of particular commit ? What the importance of –amend option of git commit command?
+- Yes a commit name can be renamed. 
+- git commit --amend command takes the staging area and uses it for the commit. If there are no changes made after commiting then 
+  the snapshot will look exactly same as the commit and we can only change commit message. 
+- If there are some file which we have forgotten to commit then we can use git commit --amend command to add those file to the commit. 
+
+17. Can I unmodify a modified file ? is there a way to do so ? if yes explain the process to do that ?
+- Yes there is a way to unmodify a modified file. There is a way to revert back changes to previous commit. 
+- It can be achived using following command -- git checkout -- filename.
+
+18. What is a Tag in GIT and Types of tags used by git ?
+- Tag is a specific point in history that is masked as important. It is genearlly masked as a release point for the software. 
+- There are vaious types of tags in GIT 
+    - Annotated Tag:
+        . They are stored as full objects in GIT database. 
+        . They are checksummed containing tagger name, email address, date and a tagging message.
+        . They are signed and verified by GNU Privacy Guard (GPG). 
+        . It is generally recomended to have a annotated tag so that it has all the information.
+        . It can be created as follows; git tag -a versionName -m "tagging message".
+
+    - Lightweigh Tag:
+        . It is just basically a commit checksum stored in a file. 
+        . It does not need any of the flags like -a, -s or -m to be passed while creating a tag. 
+        . Syntax to create a Lightweigh tag; git tag versionName -lw  
+
+19. What are branches in GIT and command used to rename a remote branch ?
+- Braches means diverging from main line of development and continuing development without messing with main branch.
+- The way git create branch is very lightweigh and very instantanious. Switching back and forth between branches in very fast as compared to VCSs tools.
+- Command to rename a remote branch; git push origin :old-name neww-name
+
+20. What are GIT aliases and can I create any aliases for git commands ? if yes create aliases for git commit
+command
+- GIT aliases are the way to improve the experice of working with git commands. 
+- It is basically a short-hand to write commands; instead of typing the whole command we can use alias to the same. 
+- Yes, we can create alias for git commands. 
+- git config --global alias.ci commit; ussage will be git ci -m "commit message".
+
+21. When you do a commit on a working directory, what git does?
+- When we do a commit GIT checksums each directory and stores those objects in git repository. 
+- GIT then creates a commit object that has the metadata and pointer for root project tree so that it can recreate the snapshot when required. 
+- Once the commit happens it also moves the HEAD to current and the latest commit in the tree. 
+
+22. What are the contents of git commit object?
+- git commit object contains metadata and pointer to root proejct tree. 
+
+23. How does Git know what branch you’re currently on?
+- It keeps a special pointer called as HEAD.
+- Once we switch the branch the HEAD moves to a new checked out branch. 
+
+24. What will git log --oneline --decorate --graph –all command used for?
+. git log: Shows logs of all the commmits made on the current branch on the repository.    
+. --oneline: Shoes the commit message in oneline all other information is not displayed.            
+. --decorate: Prints out the ref names of any commits that are shown.        
+. --graph: Gives a graphical representation of the commits for all the branches those are available.         
+. -–all: Pretends all the refs of refs are listed on command line. 
+
+25. What is fast forwarding in GIT explain a scenario?
+- Fast forwarding happens when a feature branch is merged with master branch or vice-versa. 
+- When the branch is merged it moves the HEAD forward with the commits this is called as fast-forwarding. 
+
+26. What are merge conflicts and Why will they occur?
+- When git is not able to merge two branches smoothly or cleanly in this case merge conflict occurs. 
+- When a same piece of code in the same file are being modified in the same file and then when we try to merge both branches 
+    and git is not able to merge by itself, merge conflict occours.  
+
+27. Command used to see Last commit of each branch ?
+- git branch -v: this is the command to see last commit on each branch. 
+
+28. Command used to see unmerged branches is ?
+- git branch --no-merged: Displays all the branches those are not merged with current branch. 
+
+29. What are topic branches in GIT ?
+- A topic branch is a short-lived branch that is created for single perticualar feature or related work. 
+- These branches are so easy to create that they can be create, merged and deleted many times in a day. 
+
+30. What are Remote-tracking branches? How can I list all the Remote branches ?
+- Remote-tracking branches are the once which have pointers on remote repositories. 
+- git remote show origin - will list all the remote branches. 
+
+31. Does Origin/master branch have any significance or is it defaultly created like “master” branch of a Local
+Repository?
+- The name origin/master does not have any special significance in origin. It is just like a default branch created in local repo. 
+
+32. What are Tracking Branches and What do they Track ?
+- Checking out lcoal branch from a remote-tracking branch automatically creates what is called a tracking branch.
+- And the branch it tracks is called am upsteam branch.
+- If you are on tracking branch and type git pull, GIT automatically know which server to fetch from and which branch to merge to.
+- When a repository is cloned it generally automatically creates a master branch which tracks origin/master. 
+   
+33. Suppose I have a local branch named Serverfix and remote branch ​Origin/server​ fix what is the command
+I need to use to make my local ​serverfix​ as a tracking branch of ​Origin/serverfix ?
+- There are various ways to create or track origin branches. 
+    . git checkout -b [serverfix] [origin]/serverfix
+    . git checkout --track serverfix
+    . If the branch name we are trying to checkout 1) does not exits 2) exactly matches the name of the branch 
+        - git checkout serverfix 
+
+34. Command to view all the tracking branches ?
+- git branch -vv is the command to view all the tracking branches. 
+
+35. Explain the difference between git pull and git fetch commands? What do they do ?
+- git fetch command will only download all the data to the local repository. It will not merge with current working branch.
+- git pull command will dowload and autoamtically merge to the current working branch. 
+  If there are no modified files then git will automatically merge the data from upstream branch othereise 
+  will have to resolve conflicts.   
+
+
