@@ -1,0 +1,78 @@
+1.a) 
+
+1.b) 4
+
+1.c) '51'
+
+1.d) NaN
+
+1.e) true
+
+
+2) Reference error as Y is not be defined as is being accessed.
+
+3) "string"
+
+4) Yes
+
+5) 1
+
+6) 
+
+"122"
+
+"122"
+
+"02"
+
+NaN2
+
+NaN
+
+
+7) 
+
+First Less Than and Greater Than operator works from left to right
+
+console.log(1 < 2 < 3) // true
+This is true because 1 < 2 == true and true < 3, as bools are represented in 1's and 0's and true == 1
+hence it is evalutated as 1 < 3 == true
+
+console.log(3 > 2 > 1) // false
+
+Similar to previous example 3 > 2 == true and true > 3 which evals to 1 > 1 but it is actually equal to
+1. hence it comes to false.
+
+8) 
+
+var myArray = ['a', 'b', 'c', 'd'];
+myArray.unshift('start');
+myArray.push('end');
+
+9) 
+
+a) No
+
+b) undefined
+
+c) undefined
+
+
+10) 
+
+1) 0 || 1 = 1. Using OR operator as first condition is false it will evaluate second condition, hence 1.
+
+2) 1 || 2 = 1. As first condition evals to true it does not go to second condition. 
+
+3) 0 && 1 = 0. using AND operator if the first condition evals false it returns from the first condition.
+
+4) check question 
+
+
+11) undefined, x will he hoisted in the getGirl function and will be assigned to undefined. 
+
+12) true, both of them are undefined. 
+
+
+
+
