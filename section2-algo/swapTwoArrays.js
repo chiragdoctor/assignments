@@ -7,5 +7,5 @@ function swapTwoArrays(arr1, arr2) {
     console.log(arr1, arr2);
 } 
 
-swapTwoArrays([1,2, 3, 5, 6], [4, 4, 5, 7]); // [ 4, 4, 5, 7 ] [ 1, 2, 3, 5, 6 ]
+swapTwoArrays([1,2, 3, 5, 6, 9, 0], [4, 4, 5, 7]); // [ 4, 4, 5, 7 ] [ 1, 2, 3, 5, 6 ]
 
