@@ -1,0 +1,79 @@
+1. 
+
+"use strict";
+j = 1 
+
+While we are using "use strict" it executes the code in strict mode.  
+    If we execute above code then it will throw a ReferenceError as the
+    variable is not defined and directly initialized. 
+
+2. 
+
+Both functions will return different values
+First, function foo1() will return an object { bar: "hello" }
+Second, function foo2() will return undefined as the function will return after 
+the return statment and discard all the lines bellow that statment. 
+
+3. 
+
+It will print 1,4,3,4. It will print in this order because when the function is self invoked
+it will print 1. Then will take execute the setTimeout with console.log('2') , which will then be 
+placed inside the event loop and will be executed after 1000ms after the current code in event loop is
+executed. Then it will execute the setTimeout function with console.log('3'), and put it into the 
+event loop. And then it will print 4. Once 4 is printed the control goes to the event loop where 
+3 has to be prinited without any delay i.e. 0ms and then after 1000ms it will print 4. 
+
+4. 
+It will print bellow output
+arr1 : length=5 last=['j','o','n','e','s']
+arr2 : length=5 last=['j','o','n','e','s']
+
+They will print the same output because when arr1 is assgined to arr2, it's values are not assigned to 
+arr2 but it's reference is assigned so when we make any changes to arr2 it also reflects on arr1 as it's
+pointing to the same memory location. 
+
+5. 
+
+When a inner function has access to the variable of the outer function and it save the value of that 
+variable and returns the value, this is called as closure. 
+
+Eg. 
+
+function greet(name) {
+    return () => `Hi, ${name}. How are you?`;  
+}
+
+conat sayHi = greet('Chirag');
+sayHi(); // Hi Chirag. How are you? 
+
+6. 
+
+3628800 
+It is basically calculating factorial of N=10.
+
+
+7.
+
+It will print 1. 
+Before return the inner function it actually does a closure on x which is variable of outer function.
+
+8. 
+
+x = 1
+x = undefined
+y = 2
+
+It will print the first x value as it's being defined wihtin the catch block.
+Then as y is not being initilised in that catch block it will be hoised to the parent 
+function and will be declared there and will be initialised in catch block. Heence it's
+value is avaible globally. Hence y=2 value will printed. But as x is just declared and initialised 
+in catch block it's value is not available out catch so x=undefined in second instance. 
+
+
+9. 
+
+3 will be printer. 
+First initialised b = 1; then when the outer function is called it initialised b = 2; then in the 
+inner function it initialised b = 3 hence the value of b will 3. 
+
+
