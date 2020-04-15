@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golden Ratio</title>
+</head>
+<body>
+    
+</body>
+<script>
+
+function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+ 
+var body = document.getElementsByTagName('body')[0];
+
+var str = ''
+let width = 900;
+let height = 555; 
+let count = 0;
+
+do {
+    if(count % 2 !== 0) {
+        width = Math.floor(height / 1.62);
+        str += `<div style="width:${width}px;height:${height}px;background:${getRandomColor()};">`;
+    } else {
+        height = Math.floor(width / 1.62);
+        str += `<div style="width:${width}px;height:${height}px;background:${getRandomColor()};">`; 
+    }
+    count++;
+
+} while (width >= 10 && height >= 10);
+
+for(let i = 0; i <= count; i++) {
+    str = str + '</div>'; 
+}
+
+body.innerHTML = str;
+</script>
+</html>
