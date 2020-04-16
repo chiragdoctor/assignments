@@ -26,3 +26,4 @@ function leftShiftUsingFormula(num, bits) {
 
 console.log(leftShift(6, 1), " === ", leftShiftUsingFormula(6,1));
 console.log(leftShift(6, 2), " === ", leftShiftUsingFormula(6,2));
+module.exports = binaryToDecimal;
