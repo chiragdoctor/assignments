@@ -16,3 +16,5 @@ function binary(num) {
 
 console.log(binary(10));
 console.log(binary(1024));
+
+module.exports = binary; 
