@@ -1,0 +1,29 @@
+{
+  "name": "solutions",
+  "version": "1.0.0",
+  "description": "Solution for all the bootcamp assignments",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chiragdoctor/assignments.git"
+  },
+  "keywords": [
+    "bootcamp",
+    "algorithms",
+    "programs",
+    "assignments",
+    "solutions"
+  ],
+  "author": "Chirag Doctor",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chiragdoctor/assignments/issues"
+  },
+  "homepage": "https://github.com/chiragdoctor/assignments#readme",
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
+}
