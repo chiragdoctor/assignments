@@ -39,4 +39,4 @@ const options = {
     question: ['Please select the operation (+/-/*): ', 'Please enter size of matrix 1 (NxN) : ', 'Please enter size of matrix 2 (NxN): '],
     isMatrixQuestion: true
 };
-executor(options);
+executor.executeWithMatrix(options);

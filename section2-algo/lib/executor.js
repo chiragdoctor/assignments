@@ -61,7 +61,43 @@ function executeWithChoices(options) {
             }
 
         }
-    } while (repeat === 'yes');
+    } while (repeat === 'y');
+}
+
+function executeWithMatrix(options) {
+    let repeat;
+    do {
+        console.clear();
+        const { question, programs: { validation, program, questions }, isStringQuestion, isMatrixQuestion } = options;
+        if (isMatrixQuestion) {
+            // It will get initial information regaring matrix operation and dimenssions. 
+            const matrixInfo = question.map(q => questionGenerator.getStringInput(q));
+            // If user has selected arithmatic operation then it will execute bellow. 
+            if (matrixInfo[0] === '+' || matrixInfo[0] === '-' || matrixInfo[0] === '*') {
+                const isValidMatrix = validation(matrixInfo[1], matrixInfo[2]);
+                if (isValidMatrix) {
+
+                    const matrix1 = questions(matrixInfo[1]).map(qArr => questionGenerator.getInfo(qArr));
+                    const matrix2 = questions(matrixInfo[2]).map(qArr => questionGenerator.getInfo(qArr));
+                    console.log(program(matrix1, matrix2, matrixInfo[0]));
+                    repeat = questionGenerator.repeatQuestion();
+                } else {
+                    console.log('Please enter a valid matrix rows and cols \n');
+                    executor(options);
+                }
+            } else {
+                // ELSE for trance and transpose operation. 
+                if (validation(matrixInfo[0])) {
+                    const matrix = questions(matrixInfo[0]).map(qArr => questionGenerator.getInfo(qArr));
+                    console.log(program(matrix));
+                    repeat = questionGenerator.repeatQuestion();
+                } else {
+                    console.log('Please enter a valid matrix rows and cols \n');
+                    executor(options);
+                }
+            }
+        }
+    } while (repeat === 'y')
 }
 
 function executor(options) {
@@ -77,34 +113,34 @@ function executor(options) {
         const { choice, programs } = options;
         // If there are choices in options then it will execute this IF condition.  
         if (choice) {
-            choiceIndex = generateChoices(choice);
-            if (choiceIndex > -1) {
-                // Get the program that need to be executed
-                const selectedProgram = programs[choiceIndex];
-                const { questions, validation, program } = selectedProgram;
-                if (questions) {
-                    // Get all the question that and information from the user. 
-                    numbers = questionGenerator.getInfo(questions);
-                    let isValidNumber = true;
-                    if (validation) {
-                        // it will check for the validation provided. 
-                        isValidNumber = numbers.every((number) => validation(number));
-                    }
-                    if (isValidNumber) {
-                        // If validation succeed then it will execute the program. 
-                        console.log(program(numbers));
-                        // Will ask if you want to repeat the program.  
-                        repeat = questionGenerator.repeatQuestion();
-                    } else {
-                        // This ESLE will be executed if validation fails and re-executes the program. 
-                        console.log('Please enter a valid number \n');
-                        executor(options);
-                    }
-                }
-            } else {
-                // If user selects 0 as choice then program exits. 
-                console.log('Program Exited!!');
-            }
+            //     choiceIndex = generateChoices(choice);
+            //     if (choiceIndex > -1) {
+            //         // Get the program that need to be executed
+            //         const selectedProgram = programs[choiceIndex];
+            //         const { questions, validation, program } = selectedProgram;
+            //         if (questions) {
+            //             // Get all the question that and information from the user. 
+            //             numbers = questionGenerator.getInfo(questions);
+            //             let isValidNumber = true;
+            //             if (validation) {
+            //                 // it will check for the validation provided. 
+            //                 isValidNumber = numbers.every((number) => validation(number));
+            //             }
+            //             if (isValidNumber) {
+            //                 // If validation succeed then it will execute the program. 
+            //                 console.log(program(numbers));
+            //                 // Will ask if you want to repeat the program.  
+            //                 repeat = questionGenerator.repeatQuestion();
+            //             } else {
+            //                 // This ESLE will be executed if validation fails and re-executes the program. 
+            //                 console.log('Please enter a valid number \n');
+            //                 executor(options);
+            //             }
+            //         }
+            //     } else {
+            //         // If user selects 0 as choice then program exits. 
+            //         console.log('Program Exited!!');
+            //     }
 
         } else {
             // This ELSE will be executed if the program run without choices. 
@@ -173,4 +209,8 @@ function executor(options) {
     } while (repeat === 'yes')
 }
 
-module.exports = { executor, executeWithChoices };
+module.exports = { 
+    executor, 
+    executeWithChoices, 
+    executeWithMatrix 
+};

@@ -30,4 +30,4 @@ const options = {
     question: ['Please enter matrix size to find the trace (NxN): '],
     isMatrixQuestion: true
 };
-executor(options);
+executor.executeWithMatrix(options);

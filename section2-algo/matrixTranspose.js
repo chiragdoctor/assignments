@@ -32,4 +32,4 @@ const options = {
     question: ['Please enter matrix size to find the transpose (NxN): '],
     isMatrixQuestion: true
 };
-executor(options);
+executor.executeWithMatrix(options);
