@@ -15,10 +15,10 @@ const options = {
     programs: { 
         program: isAlphabet, 
         questions: [],
-        validation: input => input.length >  1 && 'Just one alphabet'  
+        validation: () => true  
     },
     question: 'Please enter a character: ',
     isStringQuestion: true 
 };
 
-executor(options);
+executor.executeSingleQuestion(options);

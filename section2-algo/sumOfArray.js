@@ -21,4 +21,4 @@ const options = {
     question: 'Please enter size of array: '
 };
 
-executor(options);
+executor.executeSingleQuestion(options);

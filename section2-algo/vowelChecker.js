@@ -16,4 +16,4 @@ const options = {
     isStringQuestion: true 
 };
 
-executor(options);
+executor.executeSingleQuestion(options);

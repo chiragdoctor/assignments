@@ -27,4 +27,4 @@ const options = {
     isStringQuestion: false
 };
 
-executor(options);
+executor.executeSingleQuestion(options);
