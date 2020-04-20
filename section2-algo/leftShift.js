@@ -26,8 +26,7 @@ const options = {
         questions: [],
         validation: validator.isNumber
     },
-    question: ['Please enter a number: ', 'Please enter how manys bits you want to shift: '],
-    isStringQuestion: false
+    question: ['Please enter a number: ', 'Please enter how manys bits you want to shift: ']
 };
 
-executor(options);
+executor.executeWithMultipleQuestions(options);

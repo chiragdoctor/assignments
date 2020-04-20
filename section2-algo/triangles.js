@@ -25,4 +25,4 @@ const options = {
     isStringQuestion: false
 };
 
-executor(options);
+executor.executeWithMultipleQuestions(options);

@@ -30,4 +30,4 @@ const options = {
     question: ['Please enter size of array 1: ', 'Please enter size of array 2: ']
 };
 
-executor(options);
+executor.executeWithMultipleQuestions(options);
