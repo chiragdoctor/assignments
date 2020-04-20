@@ -41,4 +41,4 @@ const options = {
     ]
 };
 
-executor(options);
+executor.executeWithChoices(options);

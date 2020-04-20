@@ -10,7 +10,7 @@ function swapUsingTempVar([num1, num2]) {
     const temp = num2;
     num2 = num1;
     num1 = temp;
-    reutrn `Using temp variable:  ${num1} <==> ${num2}`;
+    return `Using temp variable:  ${num1} <==> ${num2}`;
 }
 
 // 2.
@@ -82,4 +82,4 @@ const options = {
     ]
 };
 
-executor(options);
+executor.executeWithChoices(options);

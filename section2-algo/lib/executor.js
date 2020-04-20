@@ -25,6 +25,45 @@ const options = {
 };
 */
 
+function executeWithChoices(options) {
+    let repeat;
+    const { choice, programs } = options;
+    do {
+        console.clear();
+        if (choice) {
+            choiceIndex = generateChoices(choice);
+            if (choiceIndex > -1) {
+                // Get the program that need to be executed
+                const selectedProgram = programs[choiceIndex];
+                const { questions, validation, program } = selectedProgram;
+                if (questions) {
+                    // Get all the question that and information from the user. 
+                    numbers = questionGenerator.getInfo(questions);
+                    let isValidNumber = true;
+                    if (validation) {
+                        // it will check for the validation provided. 
+                        isValidNumber = numbers.every((number) => validation(number));
+                    }
+                    if (isValidNumber) {
+                        // If validation succeed then it will execute the program. 
+                        console.log(program(numbers));
+                        // Will ask if you want to repeat the program.  
+                        repeat = questionGenerator.repeatQuestion();
+                    } else {
+                        // This ESLE will be executed if validation fails and re-executes the program. 
+                        console.log('Please enter a valid number \n');
+                        executor(options);
+                    }
+                }
+            } else {
+                // If user selects 0 as choice then program exits. 
+                console.log('Program Exited!!');
+            }
+
+        }
+    } while (repeat === 'yes');
+}
+
 function executor(options) {
     let repeat;
     let numbers = [];
@@ -134,4 +173,4 @@ function executor(options) {
     } while (repeat === 'yes')
 }
 
-module.exports = executor;
+module.exports = { executor, executeWithChoices };
