@@ -1,8 +1,19 @@
 // 14) Write a program to check whether a number is a positive number or negative number?
+const executor = require('./lib/executor');
+const validator = require('./lib/validators');
 
 function isPositive(num) {
-    return num > 0 ? 'Positive Number' : 'Negative Number';
+    return num > 0 ? `${num} is Positive Number` : `${num} is Negative Number`;
 }
 
-console.log(isPositive(-1));
-console.log(isPositive(1));
+const options = {
+    programs: {
+        program: isPositive,
+        questions: [],
+        validation: validator.isNumber
+    },
+    question: 'Please enter a number to check if it is Positive or Negative: ',
+    isStringQuestion: false
+};
+
+executor(options);

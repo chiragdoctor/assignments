@@ -1,11 +1,20 @@
 // 13) Write a program to Check Whether the given year is a leap year or not
+const executor = require('./lib/executor');
+const validator = require('./lib/validators');
 
 function isLeapYear(year) {
-    return year % 4 === 0 ? 'Yes' : 'No';
+    return year % 4 === 0 ? `Yes, ${year} is a leap year` : `No, ${year} is not a leap year`;
 }
 
-console.log(isLeapYear(2020)); 
-console.log(isLeapYear(2022)); 
+const options = {
+    programs: {
+        program: isLeapYear,
+        questions: [],
+        validation: validator.isNumber
+    },
+    question: 'Please enter a year: ',
+    isStringQuestion: false
+};
 
-
+executor(options);
 

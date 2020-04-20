@@ -1,4 +1,6 @@
 // 21) Write a program to find the trace of given matrix
+const executor = require('./lib/executor');
+const validator = require('./lib/validators');
 
 function matrixTrace(mat) {
     const len = mat.length;
@@ -6,8 +8,26 @@ function matrixTrace(mat) {
     for(let i = 0; i < len; i++) {
         result += mat[i][i];
     }
-    return result;
+    return `Trace of matrix is ${result}`;
 }
 
-console.log(matrixTrace([[1,2,3],[4,5,6],[7,8,9]]))
-console.log(matrixTrace([[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,16]]));
+const options = {
+    programs: { 
+        program: matrixTrace,
+        questions: (matrixSize) => {
+            const [rows, cols] = matrixSize.split('x');
+            let result = new Array(rows);
+            for(let i = 0; i < rows; i++) {
+                result[i] = new Array(cols);
+                for(let j = 0; j < cols; j++) {
+                    result[i][j] = `Please enter value for row ${i} and col ${j}: `;
+                }
+            }
+            return result;
+        }, 
+        validation: validator.checkRowsAndCols
+    },
+    question: ['Please enter matrix size to find the trace (NxN): '],
+    isMatrixQuestion: true
+};
+executor(options);

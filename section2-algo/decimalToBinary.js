@@ -1,4 +1,6 @@
 // 25) Write a program to Convert Decimal to Binary
+const executor = require('./lib/executor');
+const validator = require('./lib/validators');
 
 function binary(num) {
     let binary = '';
@@ -14,7 +16,15 @@ function binary(num) {
     return binary;
 }
 
-console.log(binary(10));
-console.log(binary(1024));
+const options = {
+    programs: {
+        program: binary,
+        questions: [],
+        validation: validator.isNumber
+    },
+    question: 'Please enter a number to convert to bianry: ',
+    isStringQuestion: false
+};
 
-module.exports = binary; 
+executor(options);
+

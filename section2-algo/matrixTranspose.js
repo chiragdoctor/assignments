@@ -1,4 +1,6 @@
 // Write a Program to display transpose of a matrix
+const executor = require('./lib/executor');
+const validator = require('./lib/validators');
 
 function transpose(mat) {
     let result = new Array(mat[0].length);
@@ -11,5 +13,23 @@ function transpose(mat) {
     return result;
 }
 
-console.log(transpose([[1,3,4], [3,4,7]]));
-console.log(transpose([[1,2,3], [4,5,6], [7,8,9]]));
+const options = {
+    programs: { 
+        program: transpose ,
+        questions: (matrixSize) => {
+            const [rows, cols] = matrixSize.split('x');
+            let result = new Array(rows);
+            for(let i = 0; i < rows; i++) {
+                result[i] = new Array(cols);
+                for(let j = 0; j < cols; j++) {
+                    result[i][j] = `Please enter value for row ${i} and col ${j}: `;
+                }
+            }
+            return result;
+        }, 
+        validation: validator.checkRowsAndCols
+    },
+    question: ['Please enter matrix size to find the transpose (NxN): '],
+    isMatrixQuestion: true
+};
+executor(options);

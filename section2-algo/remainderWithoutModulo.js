@@ -1,6 +1,8 @@
 // Write a program to find remainder of two numbers without using modulus (%) operator
+const executor = require('./lib/executor');
+const validators = require('./lib/validators');
 
-function remainder(num, divisor) {
+function remainder([num, divisor]) {
     // Find the quotient 
     const q = Math.floor(num / divisor);
 
@@ -9,8 +11,17 @@ function remainder(num, divisor) {
 
     // Substract num - product to get remainder
     const remainder = num - product; 
-    return remainder;
+    return `Remainder is ${remainder}`;
 }
 
-console.log('Modulo  => ', remainder(27, 5));
-console.log('Modulo  => ', remainder(30, 5));
+const options = {
+    programs: {
+        program: remainder,
+        questions: [],
+        validation: validators.isNumber
+    },
+    question: ['Please enter a number: ', 'Please enter a divisor: '],
+    isStringQuestion: false
+};
+
+executor(options);

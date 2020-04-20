@@ -1,6 +1,8 @@
 // Write a program to subtract two integers without using Minus (-) operator
+const executor = require('./lib/executor');
+const validators = require('./lib/validators');
 
-function subtract(x , y) {
+function subtract([x , y]) {
      // Iterate till there 
     // is no carry 
     while (y != 0) 
@@ -20,8 +22,17 @@ function subtract(x , y) {
         // x gives the required sum 
         y = borrow << 1; 
     } 
-    return x; 
+    return `Subsctracton is ${x}`; 
 }
 
-console.log(subtract(13, 16)); // -3 
-console.log(subtract(30, 16)); // -14 
+const options = {
+    programs: {
+        program: subtract,
+        questions: [],
+        validation: validators.isNumber
+    },
+    question: ['Please enter number 1: ', 'Please enter number 2: '],
+    isStringQuestion: false
+};
+
+executor(options);

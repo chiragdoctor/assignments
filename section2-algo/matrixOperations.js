@@ -1,4 +1,6 @@
 // 19) Write a program to add, subtract and multiple of given (NXN) Matrices
+const executor = require('./lib/executor');
+const validator = require('./lib/validators');
 
 function matrixOperation(mat1, mat2, operator) {
     const n = mat1.length;
@@ -18,6 +20,23 @@ function matrixOperation(mat1, mat2, operator) {
     return result;
 }
 
-console.log(matrixOperation([[1,2,3], [4,5,6], [7,8,9]], [[1,2,3], [4,5,6], [7,8,9]], '+'));
-console.log(matrixOperation([[1,2,3], [4,5,6], [7,8,9]], [[1,2,3], [4,5,6], [7,8,9]], '-'));
-console.log(matrixOperation([[1,2,3], [4,5,6], [7,8,9]], [[1,2,3], [4,5,6], [7,8,9]], '*'));
+const options = {
+    programs: { 
+        program: matrixOperation, 
+        questions: (matrixSize) => {
+            const [rows, cols] = matrixSize.split('x');
+            let result = new Array(rows);
+            for(let i = 0; i < rows; i++) {
+                result[i] = new Array(cols);
+                for(let j = 0; j < cols; j++) {
+                    result[i][j] = `Please enter value for row ${i} and col ${j}: `;
+                }
+            }
+            return result;
+        },
+        validation: validator.checkMatrixSize
+    },
+    question: ['Please select the operation (+/-/*): ', 'Please enter size of matrix 1 (NxN) : ', 'Please enter size of matrix 2 (NxN): '],
+    isMatrixQuestion: true
+};
+executor(options);

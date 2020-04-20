@@ -1,8 +1,6 @@
 // 3) Write a program to decide given N is Prime or not.
-const readLineSync = require('readline-sync');
-const executor = require('./executor');
-
-const isNumber = (number) => !isNaN(number);
+const executor = require('./lib/executor');
+const validators = require('./lib/validators');
 
 
 const isPrimeNumber = (n) => {
@@ -17,6 +15,16 @@ const isPrimeNumber = (n) => {
             return 'No, it\'s not a prime no';
     }
     return 'Yes, it\'s a prime number';     
-}
+};
 
-executor(isPrimeNumber, isNumber);
+const options = {
+    programs: {
+        program: isPrimeNumber,
+        questions: [],
+        validation: validators.isNumber
+    },
+    question: 'Please enter a number: ',
+    isStringQuestion: false
+};
+
+executor(options);

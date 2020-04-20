@@ -1,10 +1,15 @@
 // 27) Write a program using Right Shift Operator (6>>i = 6/2**i) and Derive the General Formula
-const binaryToDecimal = require('./leftShift');
-const decimalToBinary = require("./decimalToBinary");
+const executor = require('./lib/executor');
+const validator = require('./lib/validators');
+const conversion = require('./lib/conversion');
 
-function rightShift(number, bits) {
+function rightShiftUsingFormla(number,bits) {
+    return Math.floor(number / (2**bits));
+}
+
+function rightShift([number, bits]) {
     // converting decimal to binary.
-    let binary =  decimalToBinary(number);
+    let binary =  conversion.decimalToBinary(number);
 
     // remove bit's for right.
     binary = binary.slice(0, binary.length - bits);
@@ -13,14 +18,21 @@ function rightShift(number, bits) {
     for(let i = 0; i < bits; i++) {
         binary = '0' + binary;
     }
-    
-    return binaryToDecimal(binary);    
+
+    const usingRightShift = conversion.binaryToDecimal(binary);
+    const usingFormula = rightShiftUsingFormla(number, bits);
+    return `Conversion using ${usingRightShift} === ${usingFormula}`; 
 }
 
-function rightShiftUsingFormla(number,bits) {
-    return Math.floor(number / (2**bits));
-}
 
+const options = {
+    programs: {
+        program: rightShift,
+        questions: [],
+        validation: validator.isNumber
+    },
+    question: ['Please enter a number: ', 'Please enter how manys bits you want to shift: '],
+    isStringQuestion: false
+};
 
-console.log(rightShift(6,1), rightShiftUsingFormla(6,1));
-console.log(rightShift(20,3), rightShiftUsingFormla(20,3));
+executor(options);
