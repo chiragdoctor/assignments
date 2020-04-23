@@ -1,0 +1,36 @@
+@font-face {
+    font-family: digital;
+    src: url(../fonts/DS-DIGI.TTF);
+}
+
+body {
+    font-family: digital;
+}
+
+#timer {
+    text-align: center;
+    background-color: greenyellow;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    margin: 200px auto 0 auto;
+}
+
+#time {
+    padding-top: 150px;
+    font-weight: 300;
+    font-size: 84px;
+}
+
+button {
+    text-align: center;
+    width: 120px;
+    height: 120px;
+    font-size: 32px;
+    border-radius: 50%;
+    font-family: digital;
+}
+
+button:focus {
+    outline: none;
+}
