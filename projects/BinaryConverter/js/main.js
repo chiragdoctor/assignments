@@ -73,4 +73,6 @@ const conversionForm = document.getElementById('conversion-form');
 
 from.addEventListener('change', onChangeFrom)
 conversionForm.addEventListener('submit', convert);
-input.addEventListener('input', onChangeInput);
+if(input) {
+    input.addEventListener('input', onChangeInput);
+}
