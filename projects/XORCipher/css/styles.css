@@ -72,3 +72,6 @@ label {
     margin: 0 auto 0 auto;
   }
 
+  textarea:read-only {
+    background-color: rgb(247, 244, 244);
+  }
