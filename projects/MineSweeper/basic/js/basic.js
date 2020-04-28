@@ -54,8 +54,15 @@ function createReset() {
     document.body.appendChild(button);
 }
 
+function createH1() {
+    const h1 = document.createElement('H1');
+    h1.innerHTML = `4. Basic Minesweeper`;
+    document.body.appendChild(h1);
+}
+
 function onReset(e) {
     document.body.innerHTML = '';
+    createH1();
     createTable();
     createReset();
 } 

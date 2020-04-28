@@ -19,8 +19,17 @@ const arr = genRandomNumbers();
 createTable(arr);
 createReset(arr);
 
+
+function createH1() {
+    const h1 = document.createElement('H1');
+    h1.innerHTML = `5. Random Minesweeper`;
+    document.body.appendChild(h1);
+}
+
+
 function onReset(e) {
     document.body.innerHTML = '';
+    createH1();    
     const arr = genRandomNumbers();
     createTable(arr);
     createReset(arr);
