@@ -14,8 +14,7 @@ function weatherApp() {
             console.log(`|  Temprature   |  ${getKelToCel(temp)}ºC       |`);
             console.log(`|  Humidity     |  ${humidity}%           |`);
             console.log(`==================================`);
-        })
-        .then(() => {
+            
             const repeat = readlineSync.question('Do you want to get another city weather (y/n)? ');
             if (repeat === 'y') {
                 weatherApp();
