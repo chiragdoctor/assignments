@@ -12,7 +12,7 @@ function init() {
 }
 
 function renderProfileCard(profile) {
-    const { blog, public_repos, public_gists, bio, email, avatar_url, name, followers, following, html_url, location, company } = profile;
+    const { blog, public_repos, public_gists, bio, avatar_url, name, followers, following, html_url, location, company } = profile;
     profileCard.style.display = 'block';
     profileOtherDetails.style.display = 'block';
     const profileImage = document.getElementById('profile-image');
@@ -45,17 +45,23 @@ function renderProfileCard(profile) {
 
 function onProfileNameChange(event) {
     const profileName = event.target.value;
-    axios.get(`${apiUrl}${profileName}`)
-        .then(({ data }) => renderProfileCard(data))
-        .catch((err) => {
-            if (err) {
-                console.log('Error: ', err);
-            }
+    if (profileName.length > 0) {
+        axios.get(`${apiUrl}${profileName}`)
+            .then(({ data }) => renderProfileCard(data))
+            .catch((err) => {
+                if (err) {
+                    console.log('Error: ', err);
+                }
 
-            profileCard.style.display = 'none';
-            profileOtherDetails.style.display = 'none';
-            profileNotFound.style.display = 'block';
-        });
+                profileCard.style.display = 'none';
+                profileOtherDetails.style.display = 'none';
+                profileNotFound.style.display = 'block';
+            });
+    } else {
+        profileCard.style.display = 'none';
+        profileOtherDetails.style.display = 'none';
+        profileNotFound.style.display = 'none';
+    }
 }
 
 
