@@ -1,3 +1,22 @@
+const inputContainer = document.getElementById('input-container');
+const from = document.getElementById('from');
+const input = document.getElementById('input');
+const title = document.getElementById('title');
+
+if(from.value === "-1") {
+    inputContainer.style.display = "none";
+} 
+
+const conversionForm = document.getElementById('conversion-form');
+
+from.addEventListener('change', onChangeFrom)
+
+conversionForm.addEventListener('submit', convert);
+if(input) {
+    input.addEventListener('input', onChangeInput);
+}
+
+
 function onChangeFrom() {
     const from = document.getElementById('from');
     const to =  document.getElementById('to');
@@ -14,13 +33,15 @@ function onChangeFrom() {
 
     to.options.length = 0;
     if(from.value === 'binary') {
-        to.add(new Option('Decimal', 'decimal'))
-        labels[2].innerHTML = 'Enter Binary Number :'
-        labels[3].innerHTML = 'Decimal Number :'
+        to.add(new Option('Decimal', 'decimal'));
+        labels[2].innerHTML = 'Enter Binary Number :';
+        labels[3].innerHTML = 'Decimal Number :';
+        title.innerHTML = 'Binary to Decimal Conversions';
     } else if (from.value === 'decimal'){
-        labels[2].innerHTML = 'Enter Decimal Number :'
-        labels[3].innerHTML = 'Binay Number :'
+        labels[2].innerHTML = 'Enter Decimal Number :';
+        labels[3].innerHTML = 'Binay Number :';
         to.add(new Option('Binary', 'binay'));
+        title.innerHTML = 'Decimal to Binary Conversions';
     } else {
         inputContainer.style.display = "none";
     }
@@ -57,22 +78,4 @@ function onChangeInput(e) {
          }
     }
     
-}
-
-const inputContainer = document.getElementById('input-container');
-const from = document.getElementById('from');
-const input = document.getElementById('input');
- 
-if(from.value === "-1") {
-    inputContainer.style.display = "none";
-} 
-
-
-const conversionForm = document.getElementById('conversion-form');
-
-
-from.addEventListener('change', onChangeFrom)
-conversionForm.addEventListener('submit', convert);
-if(input) {
-    input.addEventListener('input', onChangeInput);
 }
