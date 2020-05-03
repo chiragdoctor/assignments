@@ -3,3 +3,4 @@
 *.mp4
 node_modules/
 projects/weather-app/config/default.json
+section2-algo/algo.js
