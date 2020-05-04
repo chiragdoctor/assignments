@@ -9,7 +9,7 @@ fileNames.forEach(fileName => {
         }
         const fileData = data.toString();
         const lines =  fileData.split('\n');
-        const words =  fileData.split(' ');
+        const words =  fileData.replace( /[\n]+/gm, " " ).split(' ');
         const chars = fileData.replace( /[\n]+/gm, "" ).split('');
         
         console.log(`The number of lines in ${fileName} are ${lines.length}`); 
