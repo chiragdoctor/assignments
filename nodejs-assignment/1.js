@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 const fileNames = process.argv.splice(2);
-
+console.log(fileNames);
 fileNames.forEach(fileName => {
     fs.readFile(fileName, (err, data) => {
         if(err) {
